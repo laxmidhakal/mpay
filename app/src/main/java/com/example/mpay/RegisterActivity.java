@@ -26,11 +26,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextInputLayout textInputLayoutEmail;
     private TextInputLayout textInputLayoutPassword;
     private TextInputLayout textInputLayoutConfirmPassword;
+    private TextInputLayout textInputLayoutBankname;
+    private TextInputLayout textInputLayoutAccount;
+    private TextInputLayout textInputLayoutMobile;
 
     private TextInputEditText textInputEditTextName;
     private TextInputEditText textInputEditTextEmail;
     private TextInputEditText textInputEditTextPassword;
     private TextInputEditText textInputEditTextConfirmPassword;
+    private TextInputEditText textInputEditTextBankname;
+    private TextInputEditText textInputEditTextAccount;
+    private TextInputEditText textInputEditTextMobile;
 
     private AppCompatButton appCompatButtonRegister;
     private AppCompatTextView appCompatTextViewLoginLink;
@@ -56,11 +62,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
         textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
         textInputLayoutConfirmPassword = (TextInputLayout) findViewById(R.id.textInputLayoutConfirmPassword);
+        textInputLayoutBankname = (TextInputLayout) findViewById(R.id.textInputLayoutBankname);
+        textInputLayoutAccount = (TextInputLayout) findViewById(R.id.textInputLayoutAccount);
+        textInputLayoutMobile = (TextInputLayout) findViewById(R.id.textInputLayoutMobile);
 
         textInputEditTextName = (TextInputEditText) findViewById(R.id.textInputEditTextName);
         textInputEditTextEmail = (TextInputEditText) findViewById(R.id.textInputEditTextEmail);
         textInputEditTextPassword = (TextInputEditText) findViewById(R.id.textInputEditTextPassword);
         textInputEditTextConfirmPassword = (TextInputEditText) findViewById(R.id.textInputEditTextConfirmPassword);
+        textInputEditTextBankname = (TextInputEditText) findViewById(R.id.textInputEditTextBankname);
+        textInputEditTextAccount = (TextInputEditText) findViewById(R.id.textInputEditTextAccount);
+        textInputEditTextMobile = (TextInputEditText) findViewById(R.id.textInputEditTextMobile);
 
         appCompatButtonRegister = (AppCompatButton) findViewById(R.id.appCompatButtonRegister);
 
@@ -127,12 +139,24 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 textInputLayoutConfirmPassword, getString(R.string.error_password_match))) {
             return;
         }
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextBankname, textInputLayoutBankname, getString(R.string.error_message_bank))) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextAccount, textInputLayoutAccount, getString(R.string.error_message_Account))) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextMobile, textInputLayoutMobile, getString(R.string.error_message_Mobile))) {
+            return;
+        }
 
         if (!databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim())) {
 
             user.setName(textInputEditTextName.getText().toString().trim());
             user.setEmail(textInputEditTextEmail.getText().toString().trim());
             user.setPassword(textInputEditTextPassword.getText().toString().trim());
+            user.setBankname(textInputEditTextBankname.getText().toString().trim());
+            user.setAccount(Integer.parseInt(textInputEditTextAccount.getText().toString().trim()));
+            user.setMobile(Integer.parseInt(textInputEditTextMobile.getText().toString().trim()));
 
             databaseHelper.addUser(user);
 
@@ -159,5 +183,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         textInputEditTextEmail.setText(null);
         textInputEditTextPassword.setText(null);
         textInputEditTextConfirmPassword.setText(null);
+        textInputEditTextBankname.setText(null);
+        textInputEditTextAccount.setText(null);
+        textInputEditTextMobile.setText(null);
     }
 }

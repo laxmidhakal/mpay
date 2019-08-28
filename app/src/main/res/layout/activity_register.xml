@@ -87,6 +87,53 @@
                 android:textColor="@color/colorTextHint" />
         </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayoutBankname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputEditTextBankname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Bank Name"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/colorTextHint" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayoutAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputEditTextAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Account Number"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textColor="@color/colorTextHint" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayoutMobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputEditTextMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mobile number"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textColor="@color/colorTextHint" />
+        </android.support.design.widget.TextInputLayout>
+
+
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/appCompatButtonRegister"
             android:layout_width="match_parent"

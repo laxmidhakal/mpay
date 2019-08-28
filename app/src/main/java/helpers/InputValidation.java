@@ -74,6 +74,46 @@ public class InputValidation {
         }
         return true;
     }
+    public boolean isInputEditTextBankname(TextInputEditText textInputEditText, TextInputLayout textInputLayout, String message) {
+        String value = textInputEditText.getText().toString().trim();
+        if (value.isEmpty()) {
+            textInputLayout.setError(message);
+            hideKeyboardFrom(textInputEditText);
+            return false;
+        } else {
+            textInputLayout.setErrorEnabled(false);
+        }
+
+        return true;
+    }
+    public boolean isInputEditTextAccountnumber(TextInputEditText textInputEditText, TextInputLayout textInputLayout, String message) {
+        String value = textInputEditText.getText().toString().trim();
+        if (value.isEmpty()) {
+            textInputLayout.setError(message);
+            hideKeyboardFrom(textInputEditText);
+            return false;
+        } else {
+            textInputLayout.setErrorEnabled(false);
+        }
+
+        return true;
+    }
+
+    public boolean isInputEditTextMobile(TextInputEditText textInputEditText, TextInputLayout textInputLayout, String message) {
+        String value = textInputEditText.getText().toString().trim();
+        if (value.isEmpty() || !android.util.Patterns.PHONE.matcher(value).matches()) {
+            textInputLayout.setError(message);
+            hideKeyboardFrom(textInputEditText);
+            return false;
+        } else {
+            textInputLayout.setErrorEnabled(false);
+
+
+        }
+        return true;
+    }
+
+
 
     /**
      * method to Hide keyboard

@@ -14,27 +14,26 @@ public class MyHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql="CREATE TABLE PRODUCTS(_id INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT,DESCRIPTION TEXT,PRICE REAL,VAT INTEGER,TOTAL INTEGER,TXN INTEGER,RUPI INTEGER,PHONE INTEGER )";
+        String sql="CREATE TABLE BINITA(_id INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT,DESCRIPTION TEXT,PRICE REAL,VAT DOUBLE,TOTAL INTEGER,TXN INTEGER,RUPI INTEGER )";
         db.execSQL(sql);
-        insertData("Binita Niroula","Laxmi Dhakal",1500.00,50,1550,1234556565,9750,98009090,db);
-        //insertData("laxmi dhakal","Mamta sharma",1500.00,50,1550,1234556565,9750,98009090,db);
-       // insertData("Mamta sharma","Binita niroula",1500.00,50,1550,1234556565,9750,98009090,db);
+
+        insertData("Binita Niroula","Laxmi Dhakal",1500.00,0.13*1500,1550,1234556565,9750,db);
 
 
 
 
     }
-    private void insertData(String name,String description,double price,Integer vat,Integer total, Integer txn,Integer amount,Integer phone,SQLiteDatabase database){
+    private void insertData(String name,String receiver,double price,double vat,Integer total, Integer txn,Integer amount,SQLiteDatabase database){
         ContentValues values=new ContentValues();
         values.put("NAME",name);
-        values.put("DESCRIPTION",description);
+        values.put("DESCRIPTION",receiver);
         values.put("PRICE",price);
         values.put("VAT",vat);
         values.put("TOTAL",total);
         values.put("TXN",txn);
         values.put("RUPI",amount);
-        values.put("PHONE",phone);
-        database.insert("PRODUCTS",null,values);
+
+        database.insert("BINITA",null,values);
 
     }
 

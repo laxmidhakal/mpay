@@ -5,6 +5,9 @@ public class User {
     private String name;
     private String email;
     private String password;
+    private String bank;
+    private  int account;
+    private  int mobile;
 
     public int getId() {
         return id;
@@ -36,5 +39,26 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getBankname() {
+        return bank;
+    }
+
+    public void setBankname(String bank) {
+        this.bank = bank;
+    }
+    public int getAccount() {
+        return account;
+    }
+
+    public void setAccount(int account) {
+        this.account = account;
+    }
+    public int getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(int mobile) {
+        this.mobile = mobile;
     }
 }
