@@ -130,6 +130,7 @@
                 android:hint="Mobile number"
                 android:inputType="number"
                 android:maxLines="1"
+                android:maxLength="10"
                 android:textColor="@color/colorTextHint" />
         </android.support.design.widget.TextInputLayout>
 

@@ -42,14 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i2=new Intent(this, Logout.class);
                 this.startActivity(i2);
                 return true;
-            case R.id.pan:
-                Intent i3=new Intent(this, Pan.class);
-                this.startActivity(i3);
-                return true;
-            case R.id.history:
-                Intent i4=new Intent(this, History.class);
-                this.startActivity(i4);
-                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
 

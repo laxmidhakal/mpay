@@ -20,6 +20,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // User table name
     private static final String TABLE_USER = "user";
+    private static final String TABLE_CUSTOMER = "customer";
+    private static final String TABLE_COMPANY = "company";
+    private static final String HIST0RY_USER = "HISTORY";
 
     // User Table Columns names
     private static final String COLUMN_USER_ID = "user_id";
@@ -29,13 +32,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_USER_BANKNAME = "user_bankname";
     private static final String COLUMN_USER_ACCOUNTNO = "user_accountno";
     private static final String COLUMN_USER_MOBILE = "user_mobile";
+    //transaction history user
+    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_CUSTOMER_ID = "cutomer_id";
+    private static final String COLUMN_VAT = "vat";
+    private static final String COLUMN_COMPANYID = "companyid";
+    private static final String COLUMN_AMOUNT = "amount";
+
+    private String CREATE_HISTORY_TABLE = "CREATE TABLE " + HIST0RY_USER + "("
+            + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_CUSTOMER_ID + " TEXT,"
+            + COLUMN_VAT + " INTEGER," + COLUMN_COMPANYID +"INTEGER,"+COLUMN_AMOUNT+"INTEGER"+ ")";
+
 
 
 
     // create table sql query
     private String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
             + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_USER_NAME + " TEXT,"
-            + COLUMN_USER_EMAIL + " TEXT," + COLUMN_USER_PASSWORD + " TEXT," +COLUMN_USER_BANKNAME + "TEXT,"+COLUMN_USER_ACCOUNTNO + "INTEGER,"+COLUMN_USER_MOBILE+"INTEGER"+ ")";
+            + COLUMN_USER_EMAIL + " TEXT," + COLUMN_USER_PASSWORD + " TEXT," +COLUMN_USER_BANKNAME + " TEXT,"+COLUMN_USER_ACCOUNTNO + " INTEGER,"+COLUMN_USER_MOBILE+" INTEGER"+ ")";
 
     // drop table sql query
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
@@ -52,7 +66,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_USER_TABLE);
+        db.execSQL(CREATE_HISTORY_TABLE);
+        //company ko table
+        String sql="CREATE TABLE COMPANY(_id INTEGER PRIMARY KEY AUTOINCREMENT, TXN INTEGER,NAME STRING,BANKNAME STRING,ACCOUNTNUMBER INTEGER )";
+        db.execSQL(sql);
+        insertData(1234556565,"footwear","Himalaya bank",21345,db);
+        insertData(1234587688,"clothingstore","Himal bank",32145,db);
+        insertData(1256565666,"kiranasuppliers","Asian bank",521345,db);
+        //user table
+        String user="CREATE TABLE USER(_id INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT,RECEIVER TEXT,PRICE REAL,VAT DOUBLE,TOTAL INTEGER,TXN INTEGER,AMOUNT INTEGER )";
+        db.execSQL(user);
+        insertuser("Mamta sharma","Binita niroula",1500.00,0.13*1500,1550,1234556565,9750,db);
+        insertuser("Laxmi Dhakal","Sweta koirala",1500.00,0.13*1500,1550,1234556565,9750,db);
+        insertuser("Binita Niroula","Laxmi Dhakal",1500.00,0.13*1500,1550,1234556565,9750,db);
+        db.execSQL(CREATE_USER_TABLE);
+
     }
+    //company ko insert garne data
+    private void insertData(Integer txn,String name,String bankname,Integer accountno,SQLiteDatabase database){
+        ContentValues values=new ContentValues();
+        values.put("TXN",txn);
+        values.put("NAME",name);
+        values.put("BANKNAME",bankname);
+        values.put("ACCOUNTNUMBER",accountno);
+
+        database.insert("COMPANY",null,values);
+
+    }
+    //mamta ko insert gareko data
+    private void insertuser(String name,String receiver,double price,double vat,Integer total, Integer txn,Integer amount,SQLiteDatabase database){
+        ContentValues value=new ContentValues();
+        value.put("NAME",name);
+        value.put("RECEIVER",receiver);
+        value.put("PRICE",price);
+        value.put("VAT",vat);
+        value.put("TOTAL",total);
+        value.put("TXN",txn);
+        value.put("RUPI",amount);
+        database.insert("USER",null,value);
+
+    }
+
+
 
 
     @Override

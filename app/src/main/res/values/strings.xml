@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">mpay</string>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
 
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <string name="app_name">mpay</string>
     <string name="text_accounts">All Accounts</string>
     <string name="hint_name">Name</string>
     <string name="hint_email">Email</string>

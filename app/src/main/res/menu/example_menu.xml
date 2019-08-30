@@ -9,13 +9,6 @@
         android:id="@+id/logout"
         android:title="Logout"
         app:showAsAction="never"></item>
-    <item
-        android:id="@+id/pan"
-        android:title="Pan"
-        app:showAsAction="never"></item>
-    <item
-        android:id="@+id/history"
-        android:title="History"
-        app:showAsAction="never"></item>
+
 
 </menu>
